@@ -22,4 +22,4 @@ jobs:
           # tests と test_case_logs ディレクトリをスキップする
           black_args: >
             . --check --diff
-            --exclude '/(tests|test_case_logs)/'
+            --exclude tests/ --exclude test_case_logs/
