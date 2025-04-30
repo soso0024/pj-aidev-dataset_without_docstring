@@ -8,3 +8,7 @@ __pycache__
 .coveragerc
 
 pytest.ini
+
+.qodo
+
+.DS_Store

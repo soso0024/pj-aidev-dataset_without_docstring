@@ -13,4 +13,3 @@ class User:
     def credit(self, amount: float):
         self.balance += amount
         return self.balance
-
