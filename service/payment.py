@@ -4,6 +4,9 @@ from model.order import Order
 
 
 def make_payment(user_id: int, amount: float):
+    if amount <= 0:
+        raise ValueError("Payment amount must be positive")
+
     user = get_user(user_id)
     if not user:
         raise ValueError("User not found")

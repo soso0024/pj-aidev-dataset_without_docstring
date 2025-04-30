@@ -4,6 +4,9 @@ from model.order import Order
 
 
 def generate_users(n):
+    if n < 0:
+        raise ValueError("Number of users must be positive")
+
     users = []
     for i in range(1, n + 1):
         users.append(User(id=i, name=f"User{i}", balance=random.uniform(10, 100)))

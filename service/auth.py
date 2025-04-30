@@ -5,6 +5,9 @@ from utils.string_utils import hash_password
 def register_user(user_id: int, name: str, password: str, balance=0.0):
     from model.user import User
 
+    if balance < 0:
+        raise ValueError("Balance cannot be negative")
+
     existing_user = get_user(user_id)
     if existing_user:
         balance = existing_user.balance
