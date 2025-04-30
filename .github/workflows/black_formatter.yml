@@ -1,21 +1,25 @@
+# .github/workflows/black-action.yml
 name: black-action
+
 on:
   push:
-    paths-ignore:
-      - "tests/**"
-      - "test_case_logs/**"
   pull_request:
-    paths-ignore:
-      - "tests/**"
-      - "test_case_logs/**"
   workflow_dispatch:
 
 jobs:
-  linter_name:
+  black_formatter:
     name: runner / black formatter
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: rickstaa/action-black@v1.3.3
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Black formatter
+        uses: rickstaa/action-black@v1.3.3
         with:
-          black_args: ". --check --diff" # --diffオプションを追加して差分を表示
+          # リポジトリルートの全ファイルをチェックしつつ、
+          # tests と test_case_logs ディレクトリをスキップする
+          black_args: >
+            . --check --diff
+            --exclude '/(tests|test_case_logs)/'
