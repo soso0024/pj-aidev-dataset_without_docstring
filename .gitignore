@@ -12,3 +12,5 @@ pytest.ini
 .qodo
 
 .DS_Store
+
+tests/**
