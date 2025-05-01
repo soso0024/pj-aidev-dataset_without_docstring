@@ -20,4 +20,3 @@ jobs:
         with:
           black_args: >
             . --check --diff
-            --exclude tests/ --exclude test_case_logs/
