@@ -1,82 +1,53 @@
-# TestApp アプリケーション
+# TestApp
 
-## 概要
+A simple Python application demonstrating a basic financial transactions system. This project shows a clean architecture for user management, authentication, and payment processing.
 
-TestApp は、ユーザー管理と支払い処理を行うシンプルなデモアプリケーションです。このアプリケーションは、ユーザーの登録、認証、支払い処理などの基本的な機能を備えています。
+## Project Overview
 
-## 機能一覧
+TestApp is a demonstration application that simulates users making financial transactions. It includes:
 
-1. **ユーザー管理**
+- User management (registration, authentication)
+- Balance tracking
+- Payment processing
+- Order history
 
-   - ユーザー登録：名前とパスワードでユーザーを登録できます
-   - ユーザー認証：登録したユーザーがログインできます
-   - 残高管理：各ユーザーは残高（お金）を持っています
+## Project Structure
 
-2. **支払い処理**
+The project follows a modular architecture:
 
-   - 注文処理：ユーザーが商品やサービスを注文できます
-   - 支払い処理：注文に対して支払いを行い、残高から金額が引かれます
+- **config/** - Application configuration settings
+- **data/** - Data generation for testing and demos
+- **model/** - Data models (User, Order)
+- **repository/** - Data access layer
+- **service/** - Business logic
+- **utils/** - Utility functions
 
-3. **デモ機能**
-   - サンプルユーザーの自動生成
-   - サンプル注文の自動生成
-   - デモプロセスの実行
+### Key Components
 
-## システム構成
+- **User Model** - Represents a customer with ID, name, and balance
+- **Order Model** - Represents a financial transaction
+- **Authentication** - User registration and login
+- **Payment Service** - Handles deducting funds and creating order records
 
-このアプリケーションは以下のようなフォルダ構造になっています：
+## Running the Demo
 
-```
-test_project/
-  ├── config/       # アプリケーション設定
-  ├── data/         # データ生成ツール
-  ├── model/        # データモデル（ユーザー、注文など）
-  ├── repository/   # データ保存・取得の仕組み
-  ├── service/      # ビジネスロジック
-  ├── utils/        # ユーティリティ機能
-  └── main.py       # メインプログラム
-```
-
-## 使い方
-
-このアプリケーションを実行するには、以下の手順に従ってください：
-
-1. Python がインストールされていることを確認してください（バージョン 3.6 以上推奨）
-2. ターミナル（コマンドプロンプト）を開きます
-3. プロジェクトのルートディレクトリに移動します
-4. 以下のコマンドを実行します：
+To run the demo application:
 
 ```
 python main.py
 ```
 
-## 動作の流れ
+The demo will:
 
-アプリケーションを実行すると、以下の流れで処理が行われます：
+1. Create sample users with random balances
+2. Register these users in the system
+3. Demonstrate authentication
+4. Generate sample orders
+5. Process payments and show the remaining balances
 
-1. アプリケーションが起動し、バージョン情報が表示されます
-2. サンプルユーザーが 5 人自動生成されます（それぞれ 10〜100 の範囲でランダムな残高が設定されます）
-3. 生成されたユーザーが登録されます
-4. User1（1 番目のユーザー）で認証を行います
-5. 各ユーザーに対して 1〜3 件のランダムな注文が生成されます
-6. 生成された各注文に対して支払い処理が実行されます
-7. 各支払い処理の結果と残高が表示されます
-8. デモが完了します
+## Technologies
 
-## エラーについて
+- Pure Python implementation
+- In-memory data storage
+- SHA-256 password hashing
 
-支払い処理中に「Insufficient funds（残高不足）」というエラーが表示された場合、それはユーザーの残高が注文金額より少ないことを意味します。これは通常の動作であり、実際の決済システムでも同様のチェックが行われます。
-
-## 技術的な詳細（開発者向け）
-
-- このアプリケーションは Python で開発されています
-- データベースは使用せず、メモリ内でデータを保持しています（アプリケーション終了時にデータは消えます）
-- モジュール分割による保守性の高い設計を採用しています
-- サービス層とリポジトリ層の分離によるクリーンアーキテクチャを意識しています
-
-## 今後の開発予定
-
-- データベースによる永続化
-- ユーザーインターフェースの追加
-- より多くの支払い方法のサポート
-- 商品カタログの実装
